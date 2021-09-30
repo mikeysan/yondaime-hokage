@@ -21,7 +21,11 @@ class CustomHelpPaginator(Paginator):
 
         page_title = title.qualified_name if cog else title
         if bot:
-            page_title += ' ' + emoji_random_func(bot)
+            try:
+                page_title += ' ' + getattr(cog, 'display_emoji', None)
+            except:
+                pass
+                
         embed = self._new_page(
             page_title, (title.description or "") if cog else "")
         self._add_command_fields(embed, page_title, commands_list)
@@ -138,6 +142,7 @@ class MenuHelp(DefaultMenu):
 class HelpClassPretty(PrettyHelp):
     def __init__(self, **options):
         super().__init__(**options)
+        self.show_index = True
         self.paginator = CustomHelpPaginator(color=self.color)
 
     async def send_command_help(self, command: commands.Command):
@@ -171,8 +176,10 @@ class HelpClassPretty(PrettyHelp):
             )
             for cog, command_list in sorted_map:
                 self.paginator.add_cog(cog, command_list, bot)
-            self.paginator.add_index(
-                self.show_index, self.index_title + ' ' + emoji_random_func(bot), bot)
+            try:
+                self.paginator.add_index(self.show_index, self.index_title + ' ' + getattr(cog, 'display_emoji', None),bot)
+            except:
+                self.paginator.add_index(self.show_index, self.index_title, bot)
         await self.send_pages()
 
     async def send_cog_help(self, cog: commands.Cog):

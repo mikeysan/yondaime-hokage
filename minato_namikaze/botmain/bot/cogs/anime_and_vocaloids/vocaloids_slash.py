@@ -1,6 +1,6 @@
 from discord.ext import commands
 from discord_slash import SlashContext, cog_ext
-
+import discord
 from ...lib import meek_api
 
 
@@ -8,6 +8,9 @@ class VocaloidSlash(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.description = 'Get some kawai pictures of the vocaloids.'
+    @property
+    def display_emoji(self) -> discord.PartialEmoji:
+        return discord.PartialEmoji(name='miku_hello', id=852809647357820968)
 
     @cog_ext.cog_slash(name="rin", description='Rin kawai picture')
     async def rin(self, ctx: SlashContext):

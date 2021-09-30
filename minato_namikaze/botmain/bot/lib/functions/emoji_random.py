@@ -9,4 +9,4 @@ def emoji_random_func(bot):
     elif not guild_emojis.animated and guild_emojis.is_usable():
         return f'<:{guild_emojis.name}:{guild_emojis.id}>'
     else:
-        emoji_random(bot)
+        emoji_random_func(bot)

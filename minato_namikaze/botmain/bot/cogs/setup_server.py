@@ -18,6 +18,10 @@ class ServerSetup(commands.Cog, name="Server Setup"):
             join(self.bot.minato_dir, 'discord', 'pin.png'), filename='pin.png'
         )
         return file_pin
+    
+    @property
+    def display_emoji(self) -> discord.PartialEmoji:
+        return discord.PartialEmoji(name='\N{HAMMER AND WRENCH}')
 
     @commands.command(name='setup', description="Easy setup for the server")
     @commands.has_permissions(manage_guild=True)

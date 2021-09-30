@@ -53,9 +53,6 @@ bot = commands.AutoShardedBot(
     help_command=HelpClassPretty(
         show_index=True,
         menu=MenuHelp(
-            page_left=":pikawalk:852872040016248863",
-            page_right=":thiccguy:852872039874428939",
-            remove=":sus:852797247304761405",
             active_time=60.0
         )
     ),
@@ -66,7 +63,10 @@ bot = commands.AutoShardedBot(
     ),
     case_insensitive=True,
     description="Hi I am **Minato Namikaze**, Yondaime Hokage",
-    owner_id=571889108046184449
+    owner_id=571889108046184449,
+    enable_debug_events=True,
+    chunk_guilds_at_startup=False,
+    heartbeat_timeout=150.0,
 )
 bot._cache = {}
 slash = SlashCommand(bot, sync_commands=True)

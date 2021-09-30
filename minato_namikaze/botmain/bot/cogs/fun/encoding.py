@@ -4,6 +4,7 @@ import re
 from string import ascii_lowercase as lc
 from string import ascii_uppercase as uc
 from typing import Iterator, Optional, Sequence
+import discord
 
 from discord.ext import commands
 
@@ -58,6 +59,10 @@ class Encoding(commands.Cog):
         # G = 10
         # C = 11
         # T = 01
+    
+    @property
+    def display_emoji(self) -> discord.PartialEmoji:
+        return discord.PartialEmoji(name='\N{NUMBER SIGN}\U000020e3')
 
     def search_words(self, data: str) -> bool:
         count = 0

@@ -19,6 +19,10 @@ class Random(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.description = 'Some random fun and usefull commands.'
+    
+    @property
+    def display_emoji(self) -> discord.PartialEmoji:
+        return discord.PartialEmoji(name='\N{GAME DIE}')
 
     @commands.command(aliases=["takeitback"], usage='<member.mention>')
     async def insult(self, ctx, user: Optional[Union[int, discord.Member]] = None):

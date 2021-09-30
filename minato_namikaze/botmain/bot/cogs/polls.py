@@ -13,6 +13,10 @@ class QuickPoll(commands.Cog):
         self.bot = bot
         self.reactions = ['1️⃣', '2️⃣', '3️⃣', '4️⃣',
                           '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟']
+    
+    @property
+    def display_emoji(self) -> discord.PartialEmoji:
+        return discord.PartialEmoji(name='\N{BAR CHART}')
 
     @commands.command(pass_context=True, aliases=['poll', 'polls'])
     async def polltime(self, ctx):

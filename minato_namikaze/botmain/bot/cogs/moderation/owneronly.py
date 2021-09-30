@@ -20,6 +20,10 @@ class OwnerOnly(commands.Cog):
 
     def owners(ctx):
         return ctx.author.id == ctx.guild.owner_id
+    
+    @property
+    def display_emoji(self) -> discord.PartialEmoji:
+        return discord.PartialEmoji(name='\N{CROWN}')
 
     @commands.group(invoke_without_command=True, description='Type )help own and to get list of all commands under own group')
     @commands.guild_only()

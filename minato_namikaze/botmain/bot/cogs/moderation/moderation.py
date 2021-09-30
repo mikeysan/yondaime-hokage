@@ -13,6 +13,10 @@ class Moderation(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.description = 'Some simple moderation commands'
+    
+    @property
+    def display_emoji(self) -> discord.PartialEmoji:
+        return discord.PartialEmoji(name='discord_certified_moderator', id=876846223926128701)
 
     # setdelay
     @commands.command()
@@ -273,7 +277,7 @@ class Moderation(commands.Cog):
     @commands.command(pass_context=True, usage="<member.mention> <role>", alias=['add_roles'])
     @commands.guild_only()
     @commands.has_guild_permissions(manage_roles=True)
-    async def ar(self, ctx, member: Optional[Union[int, discord.Member]], role: Union[int, discord.Role]):
+    async def ar(self, ctx, role: Union[int, discord.Role], member: Optional[Union[int, discord.Member]], ):
         '''Add roles'''
         member = get_user(member if member !=
                           None else ctx.message.author, ctx)

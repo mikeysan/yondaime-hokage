@@ -1,6 +1,7 @@
 import time as timemod
 from asyncio import TimeoutError, sleep
 from random import choice
+import discord
 
 from discord.ext import commands
 from discord.ext.commands import (Cog, MissingPermissions, command,
@@ -14,6 +15,10 @@ class Giveaway(Cog):
         self.bot = bot
         self.cancelled = False
         self.description = 'Helps you to organise a simple giveaway.'
+    
+    @property
+    def display_emoji(self) -> discord.PartialEmoji:
+        return discord.PartialEmoji(name='\N{PARTY POPPER}')
 
     @command(name="giveaway", aliases=["gcreate", "gcr", "giftcr"],)
     @commands.guild_only()

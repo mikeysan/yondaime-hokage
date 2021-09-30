@@ -29,7 +29,11 @@ class Help(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.description = 'Displays the support command for the server, this can only be used if the server owner has enabled it.'
-
+    
+    @property
+    def display_emoji(self) -> discord.PartialEmoji:
+        return discord.PartialEmoji(name='\N{SQUARED SOS}')
+    
     @commands.command(description='Open support ticket if enabled by the server admins')
     @commands.cooldown(1, 120, commands.BucketType.user)
     @commands.check(check_if_support_is_setup)

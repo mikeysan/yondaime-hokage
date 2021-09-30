@@ -11,6 +11,10 @@ class Games(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.description = "Play some amazing games"
+    
+    @property
+    def display_emoji(self) -> discord.PartialEmoji:
+        return discord.PartialEmoji(name='\N{FLYING DISC}')
 
     @commands.command(aliases=['tc'], usage='<other player.mention>')
     @commands.guild_only()

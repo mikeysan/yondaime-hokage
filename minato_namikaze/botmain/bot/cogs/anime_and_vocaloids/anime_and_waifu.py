@@ -46,6 +46,10 @@ class AnimeaMangaandWaifu(commands.Cog, name='Anime, Manga and Waifu'):
         self.bot.dagpi = Client(dagpi)
         self.description = 'Some anime, manga and waifu related commands (vote locked).'
     
+    @property
+    def display_emoji(self) -> discord.PartialEmoji:
+        return discord.PartialEmoji(name='awoo', id=760385380456726558)
+    
     async def get_waifu(self):
         waifu = await  self.bot.dagpi.waifu()
         pic = waifu['display_picture']
