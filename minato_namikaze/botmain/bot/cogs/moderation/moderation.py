@@ -302,7 +302,7 @@ class Moderation(commands.Cog):
         if reason:
             e.add_field(name='**Reason**:', value=reason, inline=True)
 
-        warning_channel = _warning_channel(ctx)
+        warning_channel = return_warning_channel(ctx)
         await member.send(embed=e)
         await warning_channel.send(embed=e, content=member.mention)
         await ctx.send(f'{member.mention} has been **warned** by you ||{ctx.author.mention}||', delete_after=10)
